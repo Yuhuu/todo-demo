@@ -1,4 +1,4 @@
-package com.example.tododemo;
+package com.example.tododemo.model;
 
 import java.util.List;
 
@@ -23,12 +23,19 @@ public class Category {
     @Column(columnDefinition = "text")
     private String description;
     
-    @ManyToMany
-    @JoinTable(
-        name = "post_tag",
-        joinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "todolist_id",referencedColumnName = "id"))
+    @ManyToMany(mappedBy = "tags")
     private List<TodoItem> items;
+
+    
+	public Category(String description, List<TodoItem> items) {
+		super();
+		this.description = description;
+		this.items = items;
+	}
+
+	public Category() {
+		super();
+	}
 
 	public Long getId() {
 		return id;

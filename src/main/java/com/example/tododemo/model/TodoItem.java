@@ -1,6 +1,7 @@
-package com.example.tododemo;
+package com.example.tododemo.model;
 
-import java.time.LocalDateTime;
+import java.security.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 
 @Entity
-@Table(name = "todo-item")
+@Table(name = "todo_item")
 public class TodoItem {
 
     @Id
@@ -18,10 +19,7 @@ public class TodoItem {
     private int id;
     
     @Column(name = "created_on")
-    private LocalDateTime createdOn;
-
-    @Column(name = "deleted", nullable = true)
-    private boolean deleted;
+    private Date createdOn;
 
     @Column(columnDefinition = "text")
     private String description;
@@ -38,15 +36,14 @@ public class TodoItem {
 
 	@PrePersist
     public void prePersist() {
-        createdOn = LocalDateTime.now();
-        deleted = false;
+        createdOn = new Date();
     }
 
     public TodoItem() {
 	}
     
-    public TodoItem(int id, List<Category> tags){
-		this.id = id;
+    public TodoItem(String description, List<Category> tags){
+		this.description = description;
 		this.tags = tags;
 	}
     
@@ -56,14 +53,6 @@ public class TodoItem {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
 	}
 
 	public String getDescription() {
