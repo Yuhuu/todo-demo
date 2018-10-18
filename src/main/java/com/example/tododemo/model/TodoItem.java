@@ -15,7 +15,12 @@ import org.hibernate.annotations.OnDeleteAction;
 public class TodoItem {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "item_generator")
+    @SequenceGenerator(
+            name = "item_generator",
+            sequenceName = "item_sequence",
+            initialValue = 1000
+    )
     private int id;
     
     @Column(name = "created_on")
