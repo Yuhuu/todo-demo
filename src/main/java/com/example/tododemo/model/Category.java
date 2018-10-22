@@ -33,6 +33,13 @@ public class Category {
 		this.items = items;
 	}
 
+	public Category(Long id, String description, List<TodoItem> items) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.items = items;
+	}
+
 	public Category() {
 		super();
 	}

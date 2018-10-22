@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" ng-app="Management">
+   <head>
+      <title>AngularJS</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+      <script type="text/javascript" th:src="@{/main.js}" ></script>
+      <script type="text/javascript" th:src="@{/service.js}" ></script>
+      <script type="text/javascript" th:src="@{/controller.js}" ></script>
+      <link th:href="@{/main.css}"  rel="stylesheet" />
+       
+      <head>
+   <body ng-controller="TodoListController">
+      <h3>
+         CRUD: Spring Boot + Rest + AngularJS
+      </h3>
+      <form ng-submit="">
+         <table border="0">
+            <tr>
+               <td>TodoItem description</td>
+               <td><input type="text" ng-model="TodoItemForm.description" /></td>
+            </tr>
+            <tr>
+               <td>TAG</td>
+               <td><input type="text" ng-model="TodoItemForm.TagsId"  /></td>
+            </tr>
+            <tr>
+               <td colspan="2">
+                  <input type="submit" value="Submit" class="blue-button" />
+               </td>
+            </tr>
+         </table>
+      </form>
+      <br/>
+      <button type="button" class="btn-success" id="save" value="Save" ng-click="save()">
+                                        <span class="glyphicon glyphicon-save"></span> Save
+                                    </button>
+      <table border="1">
+         <tr>
+            <th>description</th>
+            <th>tagsId</th>
+            <th>Edit</th>
+            <th>Delete</th>
+         </tr>
+         <!-- $scope -->
+         <tr ng-repeat="item in todoItems">
+            <td> {{ item.description }}</td>
+            <td> {{ item.tagsId }}</td>
+            <td><button type="button" class="btn-success" id="save" value="Save" ng-click="save()">
+                                        <span class="glyphicon glyphicon-save"></span> Save
+                                    </button>
+            </td>
+            <td> <button type="button" class="btn-danger" id="delete" value="Delete" ng-click="delete()">
+                                        <span class="glyphicon glyphicon-remove"></span> Delete
+                                    </button>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -14,7 +14,9 @@ import org.hibernate.annotations.OnDeleteAction;
 @Table(name = "todo_item")
 public class TodoItem {
 
-    @Id
+  
+
+	@Id
     @GeneratedValue(generator = "item_generator")
     @SequenceGenerator(
             name = "item_generator",
@@ -51,6 +53,13 @@ public class TodoItem {
 		this.description = description;
 		this.tags = tags;
 	}
+    
+    public TodoItem(int id, String description, List<Category> tags) {
+  		super();
+  		this.id = id;
+  		this.description = description;
+  		this.tags = tags;
+  	}
     
 	public int getId() {
 		return id;
