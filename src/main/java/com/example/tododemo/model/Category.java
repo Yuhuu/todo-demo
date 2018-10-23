@@ -8,6 +8,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "category")
 public class Category {
@@ -23,6 +25,7 @@ public class Category {
     @Column(columnDefinition = "text")
     private String description;
     
+    @JsonManagedReference
     @ManyToMany(mappedBy = "tags")
     private List<TodoItem> items;
 

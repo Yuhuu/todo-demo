@@ -9,6 +9,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name = "todo_item")
@@ -32,6 +34,7 @@ public class TodoItem {
     private String description;
     
     @ManyToMany
+    @JsonBackReference
     @JoinTable(
         name = "post_tag",
         joinColumns = @JoinColumn(name = "todolist_id", referencedColumnName = "id"),

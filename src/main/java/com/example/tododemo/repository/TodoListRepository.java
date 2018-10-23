@@ -11,10 +11,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.example.tododemo.model.TodoItem;
 
 public interface TodoListRepository extends JpaRepository<TodoItem, Integer>{
-	List<TodoItem> findAll();
 
 	void deleteById(Integer id);
 	 
-////	@Query("SELECT t FROM TodoItem t where t.tag_id = :id") 
-////	List<TodoItem> findByTagId(@("tag_id") Long);
 }
